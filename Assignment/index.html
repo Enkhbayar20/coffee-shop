@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Buggy Coffee Shop</title>
+    <style>
+        body { font-family: Arial; text-align: center; background: #f4f4f4; padding: 50px; }
+        .card { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        input { display: block; margin: 10px auto; padding: 8px; }
+        button { background: brown; color: white; border: none; padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>☕ Coffee Billing App</h2>
+    <input type="number" id="price" placeholder="Price per cup ($)">
+    <input type="number" id="qty" placeholder="Quantity">
+    
+    <button onclick="calculateTotal()">Calculate Total</button>
+    <button onclick="applyDiscount()">Apply 50% Discount</button>
+    <button onclick="resetApp()">Reset</button>
+
+    <h3 id="result">Total: $0</h3>
+</div>
+
+<script>
+    function calculateTotal() {
+        let p = document.getElementById('price').value;
+        let q = document.getElementById('qty').value;
+        
+        
+        let total = p + q; 
+        document.getElementById('result').innerText = "Total: $" + total;
+    }
+
+    function applyDiscount() {
+        let currentText = document.getElementById('result').innerText;
+        let currentTotal = parseFloat(currentText.replace("Total: $", ""));
+
+        let discount = currentTotal * 50; 
+        document.getElementById('result').innerText = "Discounted Total: $" + discount;
+    }
+
+    function resetApp() {
+        document.getElementById('price').value = "";
+        document.getElementById('result').innerText = "Total: $0";
+    }
+</script>
+
+</body>
+</html>
